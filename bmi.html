@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMI Calculator</title>
+    <link rel="stylesheet" href="bmi.css" type="text/css">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=FredokaOne">
+  </head>
+<body>
+  <div id="main">
+      <h3>HEI<span>GHT</span></h3>
+      <p>FT.</p>
+      <input type="text" class="height" id="feet">
+      <p>IN.</p>
+      <input type="text" class="height" id="inches">
+      <br>
+      <h3>WEI<span>GHT</span></h3>
+      <input type="text" id="weight">
+      <p>LBS.</p>
+      <div class="wrapper">
+        <button type="button" id="button">GET BMI</button>
+        <p id="answer"></p>
+        <p id="message"></p>
+      </div>
+    </div>
+    <script type="text/javascript">
+          var heightInFeet = document.getElementById("feet");
+          var heightInInches = document.getElementById("inches");
+          var weight = document.getElementById("weight");
+          document.getElementById("button").addEventListener("click",function(e) {
+            e.preventDefault;
+            // var ft = 12;
+            var heightInFeetCalculated = parseInt(heightInFeet.value) * 12;
+            var heightCalculated = heightInFeetCalculated + parseInt(heightInInches.value);
+            var result = parseInt(weight.value) / Math.pow(heightCalculated,2) * 703;
+            var finalResult = parseFloat(result).toFixed(2);
+            document.querySelector("#answer").innerHTML = "YOUR BMI IS " + finalResult;
+              if(finalResult >= 30) {
+                   var message = document.getElementById("message");
+
+                   document.querySelector("#main").style.height = "460px";
+                   message.style.color = "red";
+                   message.innerHTML = "YOUR HEALTH IS AT A HIGH RISK";
+                   this.style.display = "inline-block";
+                 }
+
+               else if (finalResult >= 29) {
+                 var message = document.getElementById("message");
+                 document.querySelector("#main").style.height = "460px";
+                 message.style.color = "red";
+                 message.innerHTML = "YOUR HELATH IS AT RISK";
+                 this.style.display = "inline-block";
+               }
+
+               else if(finalResult >= 1 && finalResult <= 28) {
+                 var message = document.getElementById("message");
+                 document.querySelector("#main").style.height = "460px";
+                 message.style.color = "green";
+                 message.innerHTML = "YOU ARE IN GOOD SHAPE";
+                 this.style.display = "inline-block";
+               }
+        });
+    </script>
+  </body>
+</html>
